@@ -1,4 +1,60 @@
-header{
-    width: 100%;
-    background-color: blue;
+/* header.css */
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 30px;
+  border-bottom: 1px solid #ddd;
+  background-color: white;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Logo */
+.logo img {
+  height: 40px;
+  cursor: pointer;
+}
+
+/* Navegación */
+.navegacion ul {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+}
+
+.navegacion ul li a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 600;
+  font-size: 14px;
+  padding: 6px 12px;
+  transition: color 0.3s ease;
+  display: inline-block;
+}
+
+.navegacion ul li a:hover {
+  color: #007bff;
+}
+
+/* Estilo especial para los enlaces con clase cuadrado */
+.navegacion ul li a.cuadrado {
+  border: 2px solid #007bff;
+  border-radius: 6px;
+  color: #007bff;
+  padding: 6px 14px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.navegacion ul li a.cuadrado:hover {
+  background-color: #007bff;
+  color: white;
 }
