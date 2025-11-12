@@ -1,5 +1,6 @@
 /* header.css */
 
+/* Estilos base (como antes) */
 header {
   display: flex;
   align-items: center;
@@ -10,13 +11,11 @@ header {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* Logo */
 .logo img {
   height: 40px;
   cursor: pointer;
 }
 
-/* Navegación */
 .navegacion ul {
   list-style: none;
   display: flex;
@@ -40,7 +39,6 @@ header {
   color: #007bff;
 }
 
-/* Estilo especial para los enlaces con clase cuadrado */
 .navegacion ul li a.cuadrado {
   border: 2px solid #007bff;
   border-radius: 6px;
@@ -57,4 +55,39 @@ header {
 .navegacion ul li a.cuadrado:hover {
   background-color: #007bff;
   color: white;
+}
+
+/* --- RESPONSIVE --- */
+
+/* Para pantallas menores o iguales a 768px */
+@media (max-width: 768px) {
+
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 15px 20px;
+  }
+
+  .logo {
+    margin-bottom: 15px;
+  }
+
+  .navegacion ul {
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+  }
+
+  .navegacion ul li a {
+    font-size: 16px;
+    padding: 10px;
+    width: 100%;
+    display: block;
+  }
+
+  .navegacion ul li a.cuadrado {
+    justify-content: center;
+    padding: 10px;
+    width: 100%;
+  }
 }
