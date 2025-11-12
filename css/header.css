@@ -1,18 +1,19 @@
-/* header.css */
 
-/* Estilos base (como antes) */
 header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 10px 30px;
-  border-bottom: 1px solid #ddd;
+ 
   background-color: white;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+  width: 75%;
+  margin: 0 auto; /* Esto centra horizontalmente el header */
 }
 
 .logo img {
-  height: 40px;
+  height: 50px;
   cursor: pointer;
 }
 
@@ -40,10 +41,11 @@ header {
 }
 
 .navegacion ul li a.cuadrado {
-  border: 2px solid #007bff;
+  border: solid 1px #586085;
+  color: #586085;
   border-radius: 6px;
-  color: #007bff;
-  padding: 6px 14px;
+  
+  padding: 17px 17px;
   display: flex;
   align-items: center;
   gap: 6px;
