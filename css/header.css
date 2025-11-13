@@ -1,20 +1,32 @@
-
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 10px 30px;
- 
+
   background-color: white;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
   width: 75%;
-  margin: 0 auto; /* Esto centra horizontalmente el header */
+  left: 50%;
+  transform: translateX(-50%); /* centra incluso con position fixed */
+  position: fixed;
+  top: 0;
+  z-index: 1000; /* para que quede encima del contenido */
 }
+
 
 .logo img {
   height: 50px;
   cursor: pointer;
+}
+.menu{
+  display: none ;
 }
 
 .navegacion ul {
@@ -34,6 +46,7 @@ header {
   padding: 6px 12px;
   transition: color 0.3s ease;
   display: inline-block;
+  overflow: hidden;
 }
 
 .navegacion ul li a:hover {
@@ -44,7 +57,7 @@ header {
   border: solid 1px #586085;
   color: #586085;
   border-radius: 6px;
-  
+  overflow: hidden;
   padding: 17px 17px;
   display: flex;
   align-items: center;
@@ -61,35 +74,54 @@ header {
 
 /* --- RESPONSIVE --- */
 
-/* Para pantallas menores o iguales a 768px */
-@media (max-width: 768px) {
+
+@media (max-width: 1000px) {
 
   header {
     flex-direction: column;
     align-items: flex-start;
-    padding: 15px 20px;
-  }
+    padding: 15px 5px;
+    
+    width: 100%;
+    max-width: 1000px;
+    }
+    
 
-  .logo {
-    margin-bottom: 15px;
+  .logo-h {
+    margin-bottom: 7px;
   }
+.menu {
+  display: block;
+  position: absolute;
+  right: 20px; /* lo pega al borde derecho */
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
 
+.fa-bars{
+  color:#586085; 
+}
   .navegacion ul {
     flex-direction: column;
-    gap: 12px;
-    width: 100%;
+    gap: 10px;
+    
+  
   }
 
   .navegacion ul li a {
     font-size: 16px;
     padding: 10px;
-    width: 100%;
+    width: 150px;
     display: block;
+    
   }
 
   .navegacion ul li a.cuadrado {
-    justify-content: center;
+    justify-content:left;
     padding: 10px;
-    width: 100%;
+    width: 150px;
+    overflow: hidden;
+   
   }
 }

@@ -3,10 +3,106 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/index.css">
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+       <link rel="stylesheet" href="css/header.css" >
+    <link rel="stylesheet" href="css/all.min.css">
     <title>Document</title>
 </head>
+ <header>
+        <div class="logo">
+            <a href="#">
+                <img src="img/lofofinall.png" alt="logo">
+            </a>
+        </div>
+        <div class="menu"><i class="fa-solid fa-bars"></i></div>
+    <nav class="navegacion">
+        <ul>
+            
+            <li><a href="">Informacion</a></li>
+            <li> <a href="">Condiciones</a></li>
+            <li><a href="">Nosotros</a></li>
+            <li><a href="" class="cuadrado"><i class="fa-solid fa-business-time"></i> Politica</a></li>
+            <li><a href="" class="cuadrado"><i class="fa-solid fa-arrow-right-to-bracket"></i> Entar</a></li>
+        </ul>
+
+    </nav>
+    </header>
+      
+  <script>
+    $(document).ready(function() {
+      // Alternar menú en pantallas pequeñas
+      $(".menu").click(function() {
+        $(".navegacion").slideToggle(300);
+      });
+
+      // Detectar cuando se cambia el tamaño de la ventana
+      $(window).resize(function() {
+        // Si la pantalla es mayor a 1000px, mostrar el menú normalmente
+        if ($(window).width() > 1000) {
+          $(".navegacion").show();
+        } else {
+          $(".navegacion").hide();
+        }
+      });
+    });
+  </script>
+   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <body>
-    <img src="img/1.png">
-    <h1>hola</h1>
+    <div class="contenedor-principal">
+    <div class="contenedor">
+   <div class="box-img">
+    <img src="img/portada.png">
+    </div>
+   <div class="box-form">
+  
+
+ <div class="logo1">
+             <img src="img/lofofinall.png" alt="log">
+       
+      </div>
+
+      <p>Crea una cuenta es fácil y gratis. Puedes compartir fotos y videos con tus amigos.</p>
+
+      <form>
+        <input type="text" placeholder="Nombre Completo" required>
+        <input type="email" placeholder="Correo Electrónico" required>
+        <input type="text" placeholder="Nombre de Usuario" required>
+        <input type="password" placeholder="Contraseña" required>
+        <button>Entrar</button>
+      </form>
+
+      <div class="condiciones">
+        Al registrarte, aceptas nuestras <a href="#">condiciones</a> y <a href="#">política de privacidad</a>.
+      </div>
+
+      
+    
+
+
+
+
+
+
+</div>
+
+   </div>
+</div>
+</div>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+ 
 </body>
+ <footer class="footer">
+  <div class="footer-links">
+    <a href="#">Informacion</a>
+    <a href="#">Condiciones</a>
+    <a href="#">Nosotros</a>
+    <a href="#">Política</a>
+    <a href="#">Seguridad</a>
+    <a href="#">Trabajo</a>
+    <a href="#">© 2025 Octopus</a>
+  </div>
+  
+</footer>
 </html>
