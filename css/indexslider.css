@@ -1,0 +1,106 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+}
+
+/* ===== SLIDER DE FONDO CON JQUERY ===== */
+.slider {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    z-index: -1;
+}
+
+.slider img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: none;
+}
+
+.slider img.active {
+    display: block;
+}
+
+/* ===== FORMULARIO CENTRADO ===== */
+.form-container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-box {
+    width: 300px;
+    padding: 25px;
+    background: white;
+    border-radius: 8px;
+     border: 1px solid #DDDBDB;
+    text-align: center;
+}
+.form-box p{
+    text-align: center;
+    color:#7c7c7c;
+    font-size: 13px;
+   font-family: 'Raleway', sans-serif;
+   font-weight: normal;
+}
+.form-box .logo {
+    width: 220px;
+    margin: auto;
+}
+
+.form-box input {
+    width: 100%;
+    padding: 12px ;
+    margin-top: 0px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.form-box button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 0px;
+    background: #007bff;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.form-box button:hover {
+    background: #0c52a2;
+}
+
+.registro {
+    margin-top: 15px;
+    text-align: center;
+   
+    line-height: 18px;
+    color:#7c7c7c;
+    font-size: 13px;
+   font-family: 'Raleway', sans-serif;
+   font-weight: normal;
+}
+
+.registro a {
+    color: #1a73e8;
+    
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1000px) {
+    .slider {
+        display: none;
+    }
+
+  
+}

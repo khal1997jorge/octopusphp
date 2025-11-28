@@ -1,0 +1,148 @@
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  overflow-x: hidden;
+}
+
+/* HEADER */
+header {
+  width: 100%;
+  background: #fff;
+  border-bottom: 1px solid #DDDBDB;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  position: relative;
+  height: 60px;
+}
+
+/* LOGO */
+.logo {
+  height: 45px;
+  margin-left: 50px;
+}
+
+/* contenedor del buscador + íconos/perfil — ocupa resto del espacio */
+.middle-and-right {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center; /* para centrar buscador + grupo derecho como conjunto */
+}
+
+/* BUSCADOR */
+.search {
+  width: 200px;
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+/* Grupo de íconos + perfil, a la derecha del buscador */
+.right-group {
+  display: flex;
+  align-items: center;
+  margin-left: 100px; /* separación buscador ↔ íconos/perfil */
+}
+
+/* ÍCONOS */
+.icons {
+  display: flex;
+  gap: 12px;
+}
+.icons a i {
+  font-size: 22px;
+  color: #007bff;
+  transition: 0.2s;
+}
+.icons a i:hover {
+  color: #0056b3;
+}
+
+/* PERFIL — separado de los íconos 50px aprox */
+.perfil {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: 50px;
+}
+.perfil img {
+  width: 37px;
+  height: 37px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.perfil span {
+ font-size: 13px;
+   font-family: 'Raleway', sans-serif;
+   font-weight: bold;
+    color: #0056b3;
+}
+
+/* HAMBURGUESA (oculta en desktop) */
+.hamburger {
+  display: none;
+  font-size: 26px;
+  cursor: pointer;
+  position: absolute;
+  right: 20px;
+  z-index: 5;
+}
+
+/* 📱 RESPONSIVE <1000px */
+@media (max-width: 1000px) {
+  /* Mostrar hamburguesa */
+  .hamburger {
+    display: block;
+  }
+
+  /* Convertir header en columna al mostrar menú */
+  header {
+    flex-direction: column;
+    align-items: stretch;
+    height: auto;
+  }
+
+  .logo {
+    width: 200px;
+    margin: 10px 20px;
+  }
+
+  /* Contenedor middle-and-right oculto por defecto */
+  .middle-and-right {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    background: #fff;
+    padding: 15px 20px;
+    border-top: 1px solid #DDDBDB;
+  }
+
+  /* Al activar un estado (ej: clase .open en JS), mostrarlo */
+  .middle-and-right.open {
+    display: flex;
+  }
+
+  .search {
+    width: 100%;
+    margin-bottom: 15px;
+  }
+
+  .right-group {
+    flex-direction: column;
+    margin-left: 0;
+    gap: 15px;
+  }
+
+  .icons {
+    justify-content: flex-start;
+  }
+
+  .perfil {
+    margin-left: 0;
+  }
+}
