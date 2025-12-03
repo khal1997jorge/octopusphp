@@ -3,104 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Archivos estilos css -->
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/indexslider.css">
-      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-       <link rel="stylesheet" href="css/header.css" >
+    <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/all.min.css">
-    <title>Document</title>
+    <!-- Importaciones de Helpers y JQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="./js/JQueryHelper.js"></script>
+    <script src="./js/FormHelper.js"></script>
+
+    <title>Octopus - Login</title>
 </head>
- <header>
-        <div class="logo">
-            <a href="#">
-                <img src="img/lofofinall.png" alt="logo">
-            </a>
-        </div>
-        <div class="menu"><i class="fa-solid fa-bars"></i></div>
+<body>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        JQueryHelper.InitializeNavbar();
+        JQueryHelper.InitializeSliders();
+    });
+</script>
+<header>
+    <div class="logo">
+        <a href="#">
+            <img src="img/lofofinall.png" alt="logo">
+        </a>
+    </div>
+    <div class="menu"><i class="fa-solid fa-bars"></i></div>
     <nav class="navegacion">
         <ul>
-            
             <li><a href="">Informacion</a></li>
-            <li> <a href="">Condiciones</a></li>
+            <li><a href="">Condiciones</a></li>
             <li><a href="">Nosotros</a></li>
             <li><a href="" class="cuadrado"><i class="fa-solid fa-business-time"></i> Politica</a></li>
             <li><a href="" class="cuadrado"><i class="fa-solid fa-arrow-right-to-bracket"></i> Registro</a></li>
         </ul>
 
     </nav>
-    </header>
-      
-  <script>
-    $(document).ready(function() {
-      // Alternar menú en pantallas pequeñas
-      $(".menu").click(function() {
-        $(".navegacion").slideToggle(300);
-      });
+</header>
+<div class="slider">
+    <img src="img/1.jpeg" class="slide active">
+    <img src="img/3.jpg" class="slide">
+</div>
 
-      // Detectar cuando se cambia el tamaño de la ventana
-      $(window).resize(function() {
-        // Si la pantalla es mayor a 1000px, mostrar el menú normalmente
-        if ($(window).width() > 1000) {
-          $(".navegacion").show();
-        } else {
-          $(".navegacion").hide();
-        }
-      });
-    });
-  </script>
+<!-- Contenedor del formulario -->
+<div class="form-container">
+    <form class="form-box" style="gap: 3px">
+        <img src="img/lofofinall.png" class="logo" alt="logo"/>
+        <p>Sign in seen photos and videos from your friends.</p>
 
+        <input type="text" name="username" placeholder="Nombre de Usuario" required autocomplete="off">
+        <input type="password" name="password" placeholder="Contraseña" required autocomplete="off">
 
+        <button type="submit">Entrar</button>
 
-
-   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<body>
-    
-  <div class="slider">
-        <img src="img/1.jpeg" class="slide active">
-        <img src="img/3.jpg" class="slide">
+        <p class="registro">¿No tienes una cuenta? <a href="./index.html">Regístrate</a></p>
+    </form>
+</div>
+<footer class="footer">
+    <div class="footer-links">
+        <a href="#">Informacion</a>
+        <a href="#">Condiciones</a>
+        <a href="#">Nosotros</a>
+        <a href="#">Política</a>
+        <a href="#">Seguridad</a>
+        <a href="#">Trabajo</a>
+        <a href="#">© 2025 Octopus</a>
     </div>
-
-    <!-- Contenedor del formulario -->
-    <div class="form-container">
-        <form class="form-box">
-
-            <img src="img/lofofinall.png" class="logo">
-              <p>Sign in seen photos and videos from your friends.</p>
-            <input type="text" placeholder="Usuario">
-            <input type="password" placeholder="Contraseña">
-
-            <button type="submit">Entrar</button>
-
-            <p class="registro">¿No tienes una cuenta? <a href="#">Regístrate</a></p>
-        </form>
-    </div>
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  
-  
-  <script>
-        $(document).ready(function(){
-            let slides = $(".slide");
-            let index = 0;
-
-            setInterval(function(){
-                slides.eq(index).fadeOut(1500);
-                index = (index + 1) % slides.length;
-                slides.eq(index).fadeIn(1500);
-            }, 5000);
-        });
-    </script>
-
-</body>
- <footer class="footer">
-  <div class="footer-links">
-    <a href="#">Informacion</a>
-    <a href="#">Condiciones</a>
-    <a href="#">Nosotros</a>
-    <a href="#">Política</a>
-    <a href="#">Seguridad</a>
-    <a href="#">Trabajo</a>
-    <a href="#">© 2025 Octopus</a>
-  </div>
-  
 </footer>
+</body>
 </html>

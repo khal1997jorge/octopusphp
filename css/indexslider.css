@@ -50,6 +50,7 @@
     font-size: 13px;
    font-family: 'Raleway', sans-serif;
    font-weight: normal;
+    margin: 7px 0 10px 0;
 }
 .form-box .logo {
     width: 220px;
@@ -58,7 +59,8 @@
 
 .form-box input {
     width: 100%;
-    padding: 12px ;
+    padding: 12px;
+    margin-bottom: 10px;
     margin-top: 0px;
     border: 1px solid #ccc;
     border-radius: 5px;
