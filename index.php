@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Archivos estilos css -->
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/all.min.css">
+    <!-- Importaciones de Helpers y JQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="./js/JQueryHelper.js"></script>
+    <script src="./js/FormHelper.js"></script>
+
+    <title>Octopus</title>
+</head>
+<body>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        JQueryHelper.InitializeNavbar();
+        FormHelper.Initialize('formulario', 'btnGuardar');
+    });
+</script>
+<header>
+    <div class="logo">
+        <a href="#">
+            <img src="img/lofofinall.png" alt="logo">
+        </a>
+    </div>
+
+    <div class="menu"><i class="fa-solid fa-bars"></i></div>
+    <nav class="navegacion">
+        <ul>
+            <li><a href="">Informacion</a></li>
+            <li> <a href="">Condiciones</a></li>
+            <li><a href="">Nosotros</a></li>
+            <li><a href="" class="cuadrado"><i class="fa-solid fa-business-time"></i> Politica</a></li>
+            <li><a href="login.html" class="cuadrado"><i class="fa-solid fa-arrow-right-to-bracket"></i> Entar</a></li>
+        </ul>
+    </nav>
+</header>
+<div class="contenedor-principal">
+    <div class="contenedor">
+        <div class="box-img">
+            <img src="img/portada.png">
+        </div>
+        <div class="box-form">
+            <div class="logo1">
+                <img src="img/lofofinall.png" alt="log">
+            </div>
+
+            <p>Crea una cuenta es fácil y gratis. Puedes compartir fotos y videos con tus amigos.</p>
+
+            <form id="formulario">
+                <input type="text" name="fullname" placeholder="Nombre Completo" required autocomplete="off">
+                <span class="text-error" data-error-for="fullname"></span>
+
+                <input type="email" name="email" placeholder="Correo Electrónico" required autocomplete="off">
+                <span class="text-error" data-error-for="email"></span>
+
+                <input type="text" name="username" placeholder="Nombre de Usuario" required autocomplete="off">
+                <span class="text-error" data-error-for="username"></span>
+
+                <input type="password" name="password" placeholder="Contraseña" required autocomplete="off">
+                <span class="text-error" data-error-for="password"></span>
+
+                <button id="btnGuardar" disabled>Entrar</button>
+            </form>
+
+            <div class="condiciones">
+                Al registrarte, aceptas nuestras <a href="#">condiciones</a> y <a href="#">política de privacidad</a>.
+            </div>
+        </div>
+    </div>
+</div>
+<footer class="footer">
+    <div class="footer-links">
+        <a href="#">Informacion</a>
+        <a href="#">Condiciones</a>
+        <a href="#">Nosotros</a>
+        <a href="#">Política</a>
+        <a href="#">Seguridad</a>
+        <a href="#">Trabajo</a>
+        <a href="#">© 2025 Octopus</a>
+    </div>
+</footer>
+</body>
+</html>
