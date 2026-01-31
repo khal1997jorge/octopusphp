@@ -4,7 +4,13 @@ class FormHelper {
         CONTRASENA_CORTA: 'La contraseña debe tener al menos 8 caracteres',
         CORREO_INVALIDO: 'El formato del correo es inválido',
         FALTA_CAMPO_OBLIGATORIO: `Este campo es obligatorio`,
+        LONGITUD_CORTA: 'La longitud debe tener al menos 4 caracteres',
+        LONGITUD_LARGA: 'La longitud máxima es de 50 caracteres',
+        CONTIENE_ESPACIOS: 'No se permiten espacios'
     }
+
+    static LONGITUD_MINIMA_PERMITIDA = 4;
+    static LONGITUD_MAXIMA_PERMITIDA = 25;
 
     static Initialize = (idFormulario, idBotonGuardar) => {
         /**
@@ -56,14 +62,44 @@ class FormHelper {
                 if (valor && !this._contrasenaEsValida(valor)) {
                     return this.MENSAJES_ERRORES.CONTRASENA_INVALIDA;
                 }
+
                 break;
 
             case "email":
                 if (!this._correoEsValido(valor)) {
                     return this.MENSAJES_ERRORES.CORREO_INVALIDO;
                 }
+
+                if(valor.includes(' ')){
+                    return this.MENSAJES_ERRORES.CONTIENE_ESPACIOS
+                }
+
                 break;
+
+            case "username":
+                if(valor.length < this.LONGITUD_MINIMA_PERMITIDA){
+                    return this.MENSAJES_ERRORES.LONGITUD_CORTA
+                }
+
+                if(valor.length > this.LONGITUD_MAXIMA_PERMITIDA ){
+                    return this.MENSAJES_ERRORES.LONGITUD_LARGA
+                }
+
+                if(valor.includes(' ')){
+                    return this.MENSAJES_ERRORES.CONTIENE_ESPACIOS
+                }
+
+                break;
+
             default:
+                if(esObligatorio){
+                    if( valor.length < this.LONGITUD_MINIMA_PERMITIDA)
+                        return this.MENSAJES_ERRORES.LONGITUD_CORTA
+
+                    if( valor.length > this.LONGITUD_MAXIMA_PERMITIDA)
+                        return this.LONGITUD_MAXIMA_PERMITIDA
+                }
+
                 break;
         }
 

@@ -13,7 +13,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    flex: 1; /* ocupa todo el espacio disponible antes del footer */
+    flex: 1; /* ocupa el espacio disponible antes del footer */
     min-height: 115vh;
 
 }
