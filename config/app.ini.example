@@ -1,0 +1,6 @@
+[database]
+host = mysql-db
+port = 3306
+user = web_client
+password = 12345678az
+name = octopusphp
