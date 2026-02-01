@@ -17,7 +17,7 @@ use App\Core\Enums\UserColumn;
         const errMessageHTML = document.getElementById('err-message-validation');
         errMessageHTML.innerHTML = ''
 
-        await fetch('<?= Routes::Login ?>', {
+        await fetch('<?= Routes::Register ?>', {
             method: 'POST',
             body: new FormData(e.target)
         }).then(async (res) => {
@@ -61,7 +61,7 @@ use App\Core\Enums\UserColumn;
                 <span class="text-error" data-error-for="<?= UserColumn::Password ?>"></span>
 
                 <span id="err-message-validation"></span>
-                <button id="btnGuardar" disabled>Entrar</button>
+                <button id="btnGuardar" disabled>Crear</button>
             </form>
 
             <div class="condiciones">

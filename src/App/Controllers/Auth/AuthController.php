@@ -2,6 +2,7 @@
 
 namespace App\Controllers\Auth;
 
+use App\Core\Database\Clauses\Where;
 use App\Core\Enums\HttpCodes;
 use App\Core\Enums\Methods;
 use App\Core\Enums\Routes;
@@ -73,7 +74,6 @@ class AuthController implements IControllerContract
 
                 if ($route === Routes::Logout) {
                     self::logout();
-                    redirect(Routes::Login);
                     return;
                 }
 
@@ -88,23 +88,21 @@ class AuthController implements IControllerContract
 
     /**
      * @throws DatabaseException
+     * @throws InvalidParametersException
      */
-    private static function registerUser(string $email, string $password, string $name, string $username): User
+    private static function registerUser(string $email, string $password, string $name, string $username)
     {
-        $existingUser = User::findOne([
-            UserColumn::Email => $email
+        $isDuplicatingEmail = User::exists([
+            new Where(UserColumn::Email, '=', $email),
         ]);
 
-        if ($existingUser) {
-            throw new DatabaseException('Ya existe un usuario con este email');
-        }
-
-        $existingUser = User::findOne([
-            UserColumn::Username => $username
+        $isDuplicationUsername = User::findOne([
+            new Where(UserColumn::Username, '=', $username),
         ]);
 
-        if ($existingUser) {
-            throw new DatabaseException('Ya existe un usuario con este nombre de usuario');
+        if ($isDuplicatingEmail || $isDuplicationUsername) {
+            $fieldDuplicated = $isDuplicatingEmail? UserColumn::Email: UserColumn::Username;
+            throw new DatabaseException("Ya existe un usuario con este: $fieldDuplicated");
         }
 
         $user = new User();
@@ -116,21 +114,25 @@ class AuthController implements IControllerContract
         if (! $user->insert()) {
             throw new DatabaseException('Error al registrar usuario');
         }
-
-        return $user;
     }
 
-    private static function authenticate(string $username, string $password): ?User
+    /**
+     * @throws NotFoundException
+     * @throws UnauthorizedException
+     * @throws DatabaseException
+     * @throws InvalidParametersException
+     */
+    private static function authenticate(string $username, string $password): void
     {
         if( !$username || !$password){
             throw new InvalidParametersException('Los parámetros enviados para el login son inválidos');
         }
 
         $user = User::findOne([
-            UserColumn::Username => $username
+            new Where(UserColumn::Username, '=', $username),
         ]);
 
-        if( !$user){
+        if( !$user ){
             throw new NotFoundException('No se encontró el usuario');
         }
         
@@ -138,13 +140,17 @@ class AuthController implements IControllerContract
             throw new UnauthorizedException('Contraseña incorrecta');
         }
 
-        // Grabar id en la sesión
+        // Grabar datos recurrentes del usuario en la Sesion
         $_SESSION['userId'] = $user->id;
-
-        return $user;
+        $_SESSION['profileURL'] = $user->getUrlAvatar();
+        $_SESSION['username'] = $user->username;
     }
 
 
+    /**
+     * @throws DatabaseException
+     * @throws InvalidParametersException
+     */
     public static function currentUser(): ?User
     {
         if (!isset($_SESSION['userId'])) {
@@ -154,16 +160,19 @@ class AuthController implements IControllerContract
         $userId = $_SESSION['userId'];
         
         return User::findOne([
-            UserColumn::Id => $userId
+            new Where(UserColumn::Id, '=', $userId)
         ]);
     }
 
     public static function logout(): void
     {
         session_destroy();
-        redirect(Routes::Login);
     }
 
+    /**
+     * @throws DatabaseException
+     * @throws InvalidParametersException
+     */
     private static function redirectIfAuthenticated(): void
     {
         $user = self::currentUser();

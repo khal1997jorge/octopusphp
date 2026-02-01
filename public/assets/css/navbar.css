@@ -1,33 +1,31 @@
-/* Reset básico */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+/* HEADER */
 body {
+  margin: 0;
+  background: linear-gradient(180deg, rgba(37,99,235,0.03), rgba(14,165,233,0.01)), var(--bg-1);
   overflow-x: hidden;
 }
 
-/* HEADER */
 header {
   width: 100%;
   background: #fff;
   border-bottom: 1px solid #DDDBDB;
   display: flex;
   align-items: center;
-  padding: 0 20px;
   position: relative;
   height: 60px;
+  padding: 0 20px;
 }
 
 /* LOGO */
 .logo {
   height: 45px;
-  margin-left: 50px;
+  margin-left: 80px;
+  background: #fff;
 }
 
 /* contenedor del buscador + íconos/perfil — ocupa resto del espacio */
 .middle-and-right {
+  background: #fff;
   flex: 1;
   display: flex;
   align-items: center;
@@ -40,10 +38,12 @@ header {
   padding: 8px 12px;
   border: 1px solid #ccc;
   border-radius: 6px;
+  background: #fff;
 }
 
 /* Grupo de íconos + perfil, a la derecha del buscador */
 .right-group {
+  background: #fff;
   display: flex;
   align-items: center;
   margin-left: 100px; /* separación buscador ↔ íconos/perfil */
@@ -63,6 +63,9 @@ header {
   color: #0056b3;
 }
 
+#logo-principal:hover {
+  cursor: pointer;
+}
 /* PERFIL — separado de los íconos 50px aprox */
 .perfil {
   display: flex;
@@ -77,10 +80,10 @@ header {
   object-fit: cover;
 }
 .perfil span {
- font-size: 13px;
-   font-family: 'Raleway', sans-serif;
-   font-weight: bold;
-    color: #0056b3;
+  font-size: 13px;
+  font-family: 'Raleway', sans-serif;
+  font-weight: bold;
+  color: #0056b3;
 }
 
 /* HAMBURGUESA (oculta en desktop) */
@@ -89,6 +92,7 @@ header {
   font-size: 26px;
   cursor: pointer;
   position: absolute;
+  top: 15px;
   right: 20px;
   z-index: 5;
 }
@@ -145,4 +149,8 @@ header {
   .perfil {
     margin-left: 0;
   }
+}
+
+#profile-image-navbar:hover {
+  cursor: pointer;
 }

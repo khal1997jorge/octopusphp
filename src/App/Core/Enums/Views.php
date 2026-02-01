@@ -11,15 +11,16 @@ class Views
     const Register = self::_Auth_ . '/register.php';
 
     /** HOME MODULE */
-    private const _Home_ = '/Home';
-    const Home = self::_Home_ . '/index.php';
-    const Profile = self::_Home_ . '/profile.php';
+    const Home = '/Home/index.php';
 
-    /** LAYOUT MODULE */
-    private const _Layouts_ = '/Layouts';
-    const LayoutsFooter = self::_Layouts_ . '/footer.php';
+    /** PROFILE MODULE */
+    const Profile = '/Profile/index.php';
 
     /** NOT FOUND MODULE */
-    private const _NotFound_ = '/NotFound';
-    const NotFound = self::_NotFound_ . '/index.php';
+    const NotFound = '/NotFound/index.php';
+
+    /** LAYOUT */
+    const LayoutsFooter = '/Layouts/footer.php';
+    const LayoutsNavbar = '/Layouts/navbar.php';
+
 }

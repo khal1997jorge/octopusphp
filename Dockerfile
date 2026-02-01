@@ -18,3 +18,6 @@ COPY config /var/www/html/config/
 RUN chown -R www-data:www-data /var/www/html
 
 WORKDIR /var/www/html
+
+
+cp .env .env.copy

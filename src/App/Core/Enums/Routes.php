@@ -19,8 +19,8 @@ class Routes
     const Logout = self::__moduleAuth__ . '/Logout';
 
     /** HOME SECTION */
-    private const __moduleHome__ = '/Home';
+    const Home = '/Home';
 
-    const Home = self::__moduleHome__;
-    const Profile = self::__moduleHome__ . '/Profile';
+    /** Profile SECTION */
+    const Profile = '/Profile';
 }

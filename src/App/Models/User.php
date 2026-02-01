@@ -2,11 +2,10 @@
 
 namespace App\Models;
 
-use App\Core\Model;
 use App\Core\Enums\UserColumn;
-use App\Core\Interfaces\IModelContract;
+use App\Models\Base\Model;
 
-class User extends Model implements IModelContract
+class User extends Model
 {
     public int $id;
     public string $email;
@@ -14,7 +13,7 @@ class User extends Model implements IModelContract
     public string $username;
     public string $name;
     public ?string $phone = null;
-    public ?string $photo = null;
+    public ?string $urlPhoto = null;
 
     public static function table(): string
     {
@@ -36,7 +35,15 @@ class User extends Model implements IModelContract
             UserColumn::Username,
             UserColumn::Name,
             UserColumn::Phone,
-            UserColumn::Photo
+            UserColumn::UrlPhoto
         ];
+    }
+
+    public function getUrlAvatar(): string {
+        if ($this->urlPhoto) {
+            return $this->urlPhoto;
+        }
+
+        return RELATIVE_UPLOADS_PATH. '/avatars/default.png';
     }
 }

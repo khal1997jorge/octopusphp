@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS users (
     username VARCHAR(50) NOT NULL UNIQUE,
     name VARCHAR(255) NOT NULL,
     phone VARCHAR(10) NULL,
-    photo LONGBLOB NULL
+    urlPhoto VARCHAR(255) NULL
 );
 
 CREATE INDEX idx_user_email ON users(email);

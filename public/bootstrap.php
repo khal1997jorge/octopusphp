@@ -5,6 +5,8 @@ session_start();
 // Definimos Path absolutos para ubicar carpetas importantes
 const PUBLIC_PATH = __DIR__;
 const ASSETS_PATH = '/assets';
+const RELATIVE_UPLOADS_PATH = '/uploads';
+const ABSOLUTE_PATH_UPLOAD = '/var/www/html/uploads';
 const APP_PATH = PUBLIC_PATH . '/src/App';
 const VIEW_PATH = APP_PATH . '/Views';
 const CONFIG_PATH = PUBLIC_PATH . '/config';

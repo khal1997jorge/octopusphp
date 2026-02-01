@@ -10,5 +10,5 @@ class UserColumn
     const Name = 'name';
     const Username = 'username';
     const Phone = 'phone';
-    const Photo = 'photo';
+    const UrlPhoto = 'urlPhoto';
 }

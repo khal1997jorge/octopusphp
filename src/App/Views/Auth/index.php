@@ -3,7 +3,7 @@ use App\Core\Enums\Views;
 use App\Core\Enums\Routes;
 
 /**
- * @var string $page
+ * @var string $page //puede ser login.php o register.php
  */
 ?>
 
@@ -14,10 +14,12 @@ use App\Core\Enums\Routes;
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Archivos estilos css -->
-    <link rel="stylesheet" href="<?= ASSETS_PATH ?>/css/indexslider.css">
-    <link rel="stylesheet" href="<?= ASSETS_PATH ?>/css/index.css">
     <link rel="stylesheet" href="<?= ASSETS_PATH ?>/css/header.css">
+    <link rel="stylesheet" href="<?= ASSETS_PATH ?>/css/footer.css">
     <link rel="stylesheet" href="<?= ASSETS_PATH ?>/css/all.min.css">
+    <link rel="stylesheet" href="<?= ASSETS_PATH ?>/css/Auth/slider.css">
+    <link rel="stylesheet" href="<?= ASSETS_PATH ?>/css/Auth/index.css">
+    <link rel="stylesheet" href="<?= ASSETS_PATH ?>/css/Auth/index.css">
     <link rel="stylesheet" href="<?= ASSETS_PATH ?>/css/Auth/index.css">
     <!-- Importaciones de Helpers y JQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

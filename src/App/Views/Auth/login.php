@@ -13,7 +13,7 @@ use App\Core\Enums\UserColumn;
         const errMessageHTML = document.getElementById('err-message-validation');
         errMessageHTML.innerHTML = ''
 
-        await fetch('<?= Routes::Login ?>', {
+        fetch('<?= Routes::Login ?>', {
             method: 'POST',
             body: new FormData(e.target)
         }).then(async (res) => {
@@ -25,9 +25,7 @@ use App\Core\Enums\UserColumn;
             const data = await res.json();
             window.location.href = data.routeToRedirect;
 
-        }).catch(async (res) => {
-            errMessageHTML.innerHTML = await (res.json()).error
-        })
+        }).catch(() => errMessageHTML.innerHTML = 'Error de red o del servidor';)
     });
 </script>
 <div class="slider">
