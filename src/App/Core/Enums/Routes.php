@@ -19,7 +19,12 @@ class Routes
     const Logout = self::__moduleAuth__ . '/Logout';
 
     /** HOME SECTION */
-    const Home = '/Home';
+    private const __moduleHome__ = '/Home';
+
+    const Home = self::__moduleHome__ . '/';
+    const PostCreate = self::__moduleHome__ . '/Post/Create';
+    const PostDelete = self::__moduleHome__ . '/Post/Delete';
+    const PostLike = self::__moduleHome__ . '/Post/Like';
 
     /** Profile SECTION */
     const Profile = '/Profile';

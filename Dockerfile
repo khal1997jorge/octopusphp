@@ -6,9 +6,7 @@ RUN a2enmod rewrite
 
 # Instalar librerias para conexion a MySQL
 RUN apt-get update \
-    && docker-php-ext-install mysqli \
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/*
+    && docker-php-ext-install mysqli
 
 # Copiar proyecto al contenedor
 COPY public /var/www/html/
@@ -19,5 +17,4 @@ RUN chown -R www-data:www-data /var/www/html
 
 WORKDIR /var/www/html
 
-
-cp .env .env.copy
+EXPOSE 80

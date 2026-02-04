@@ -27,8 +27,8 @@ spl_autoload_register(function ($class) {
 // Definimos una función global para cargar vistas
 if( !function_exists('load_view')) {
     function load_view($filePhp, $data = []) {
-        extract($data);
-        require_once VIEW_PATH . "$filePhp";
+        extract($data, EXTR_OVERWRITE);
+        require VIEW_PATH . "$filePhp"; // permite cargar multiples veces una vista
     }
 }
 

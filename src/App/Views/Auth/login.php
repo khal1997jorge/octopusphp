@@ -25,7 +25,7 @@ use App\Core\Enums\UserColumn;
             const data = await res.json();
             window.location.href = data.routeToRedirect;
 
-        }).catch(() => errMessageHTML.innerHTML = 'Error de red o del servidor';)
+        }).catch(() => errMessageHTML.innerHTML = 'Error de red o del servidor');
     });
 </script>
 <div class="slider">
