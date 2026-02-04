@@ -4,6 +4,7 @@ require_once __DIR__ . '/bootstrap.php';
 
 use App\Controllers\Auth\AuthController;
 use App\Controllers\Home\HomeController;
+use App\Controllers\Home\PostController;
 use App\Controllers\NotFound\NotFoundController;
 use App\Controllers\Profile\ProfileController;
 use App\Core\Enums\Routes;
@@ -23,6 +24,12 @@ switch ($route) {
 
     case Routes::Home:
         HomeController::handlerRoute($route, $method);
+        break;
+
+    case Routes::PostCreate:
+    case Routes::PostDelete:
+    case Routes::PostLike:
+        PostController::handlerRoute($route, $method);
         break;
 
     case Routes::Profile:

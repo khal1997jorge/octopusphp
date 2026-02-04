@@ -2,12 +2,14 @@
 
 namespace App\Models\Base;
 
+use App\Core\Database\Clauses\OrderBy;
 use App\Core\Database\Clauses\Set;
 use App\Core\Database\Clauses\Where;
 use App\Core\Database\Database;
 use App\Core\Exceptions\DatabaseException;
 use App\Core\Exceptions\InvalidParametersException;
 use App\Core\Interfaces\IModelContract;
+use DateTime;
 
 abstract class Model extends Database implements IModelContract
 {
@@ -65,12 +67,18 @@ abstract class Model extends Database implements IModelContract
      * @throws DatabaseException
      * @throws InvalidParametersException
      */
-    public static function findBy(array $wheresConditions): array
+    public static function findBy(array $wheresConditions, ?OrderBy $order = null): array
     {
         $whereStatement = self::buildWhereStatement($wheresConditions);
         $tableName = static::table();
 
+
         $sql = "SELECT * FROM $tableName WHERE $whereStatement";
+
+        if($order){
+            $orderByStatement = self::buildOrderByStatement($order);
+            $sql .= " ORDER BY $orderByStatement";
+        }
 
         $result = self::connection()->query($sql);
 
@@ -132,10 +140,10 @@ abstract class Model extends Database implements IModelContract
         $setStatement = self::buildSetStatement($sets);
 
         $wheres = [];
-        foreach (static::primaryKeys() as $pk) {
-            self::checkPrimaryKey($pk);
-            $wheres[] = new Where($pk, '=', $this->$pk);
-        }
+        $pk = static::primaryKey();
+        self::checkPrimaryKey($pk);
+        $wheres[] = new Where($pk, '=', $this->$pk);
+
         $whereStatement = self::buildWhereStatement($wheres);
 
         $tableName = static::table();
@@ -153,11 +161,10 @@ abstract class Model extends Database implements IModelContract
     {
         $wheres = [];
 
-        foreach (static::primaryKeys() as $pk) {
-            self::checkPrimaryKey($pk);
+        $pk = static::primaryKey();
+        self::checkPrimaryKey($pk);
 
-            $wheres[] = new Where($pk, '=', $this->$pk);
-        }
+        $wheres[] = new Where($pk, '=', $this->$pk);
 
         $tableName = static::table();
         $whereStatement = self::buildWhereStatement($wheres);
@@ -178,6 +185,10 @@ abstract class Model extends Database implements IModelContract
         }
     }
 
+    private static function buildOrderByStatement(OrderBy $clause){
+        return $clause->column . ' ' . $clause->order;
+    }
+
     /**
      * @param Where[] $wheresConditions
      * @return string
@@ -193,7 +204,23 @@ abstract class Model extends Database implements IModelContract
 
             $column   = $condition->column;
             $operator = $condition->operator;
-            $value    = self::formatValueForSql($condition->value);
+
+            if(is_array($condition->value)){
+                if(empty($condition->value)){
+                    $whereParts[] = '1 = 0'; // Busqueda imposible
+                   continue;
+                }
+
+                $valuesParsed = array_map(
+                    fn($val) => self::formatValueForSql($val),
+                    $condition->value
+                );
+
+                $value = '(' . implode(', ', $valuesParsed) . ')';
+
+            } else {
+                $value = self::formatValueForSql($condition->value);
+            }
 
             $whereParts[] = "$column $operator $value";
         }

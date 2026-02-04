@@ -3,11 +3,17 @@
 namespace App\Controllers\Home;
 
 use App\Controllers\Auth\AuthController;
+use App\Core\Database\Clauses\OrderBy;
+use App\Core\Database\Clauses\Where;
 use App\Core\Enums\HttpCodes;
+use App\Core\Enums\LikeColumn;
 use App\Core\Enums\Methods;
+use App\Core\Enums\PostColumn;
 use App\Core\Enums\Routes;
 use App\Core\Enums\Views;
 use App\Core\Interfaces\IControllerContract;
+use App\Models\Like;
+use App\Models\Post;
 
 class HomeController implements IControllerContract
 {
@@ -15,7 +21,23 @@ class HomeController implements IControllerContract
     {
         if($method === Methods::Get){
             self::redirectIfNotLoggedIn();
-            load_view(Views::Home);
+
+            $userId = AuthController::currentUser()->id;
+            $posts = Post::findBy([
+                new Where(PostColumn::UserId, '=', $userId)
+            ], new OrderBy(PostColumn::Id, OrderBy::DESCENDENT));
+
+            $postIds = array_column($posts, PostColumn::Id);
+
+            $idsPostLikedByUser = Like::findBy([
+                new Where(LikeColumn::UserId, '=', $userId),
+                new Where(LikeColumn::PostId, 'IN', $postIds)
+            ]);
+
+            load_view(Views::Home, [
+                'posts' => $posts,
+                'idsPostLikedByUser' => array_column($idsPostLikedByUser, LikeColumn::PostId)
+            ]);
 
             return;
         }
@@ -31,6 +53,7 @@ class HomeController implements IControllerContract
             exit;
         }
     }
+    
     private static function sendErrorJsonResponse(\Exception $e): void
     {
         http_response_code($e->getCode());

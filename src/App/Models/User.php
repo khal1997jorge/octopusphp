@@ -20,11 +20,9 @@ class User extends Model
         return 'users';
     }
 
-    public static function primaryKeys(): array
+    public static function primaryKey(): string
     {
-        return [
-            UserColumn::Id
-        ];
+        return UserColumn::Id;
     }
 
     public static function columns(): array

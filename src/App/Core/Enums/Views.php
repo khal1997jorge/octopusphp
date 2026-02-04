@@ -12,6 +12,7 @@ class Views
 
     /** HOME MODULE */
     const Home = '/Home/index.php';
+    const HomePost = '/Home/post.php';
 
     /** PROFILE MODULE */
     const Profile = '/Profile/index.php';

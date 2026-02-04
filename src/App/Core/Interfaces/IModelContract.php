@@ -17,5 +17,5 @@ interface IModelContract
     /**
      * Columnas pk del modelo
      */
-    public static function primaryKeys(): array;
+    public static function primaryKey(): string;
 }
